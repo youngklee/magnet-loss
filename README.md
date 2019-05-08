@@ -1,6 +1,8 @@
 # magnet-loss
 
-Use an encoder to learn embeddings using the magnet loss. See "METRIC LEARNING WITH ADAPTIVE DENSITY DISCRIMINATION" by Rippel et al.
+An encoder to learn embeddings using the magnet loss implemented in TensorFlow. See "METRIC LEARNING WITH ADAPTIVE DENSITY DISCRIMINATION" by Rippel et al. The codes from the following repos are used:
+* https://github.com/pumpikano/tf-magnet-loss
+* https://github.com/nwojke/cosine_metric_learning/blob/master/losses.py
 
 ```
 $ plot_smooth(batch_losses)
