@@ -81,7 +81,7 @@ mnist = input_data.read_data_sets('MNIST_data')
 x_train, y_train = mnist.train.images, mnist.train.labels
 
 learning_rate = 0.01
-n_epochs = 300
+n_epochs = 200
 batch_size = 100
 feature_size = 784
 embed_size = 2
@@ -99,26 +99,20 @@ features, label = iterator.get_next()
 
 train_init = iterator.make_initializer(train_data)
 
-w1 = tf.Variable(tf.random_normal(shape=[feature_size, 40], stddev=0.01), name="weights1")
-b1 = tf.Variable(tf.zeros([1, 40]), name="bias1")
+w1 = tf.Variable(tf.random_normal(shape=[feature_size, 393], stddev=0.01), name="weights1")
+b1 = tf.Variable(tf.zeros([1, 393]), name="bias1")
 h1 = tf.add(tf.matmul(tf.cast(features, tf.float32), w1), b1)
 h1 = tf.layers.batch_normalization(h1, training=True)
 h1 = tf.nn.relu(h1)
 
-w2 = tf.Variable(tf.random_normal(shape=[40, 20], stddev=0.01), name="weights2")
-b2 = tf.Variable(tf.zeros([1, 20]), name="bias2")
+w2 = tf.Variable(tf.random_normal(shape=[393, embed_size], stddev=0.01), name="weights2")
+b2 = tf.Variable(tf.zeros([1, embed_size]), name="bias2")
 h2 = tf.add(tf.matmul(tf.cast(h1, tf.float32), w2), b2)
 h2 = tf.layers.batch_normalization(h2, training=True)
-h2 = tf.nn.relu(h2)
-
-w3 = tf.Variable(tf.random_normal(shape=[20, 2], stddev=0.01), name="weights3")
-b3 = tf.Variable(tf.zeros([1, 2]), name="bias3")
-h3 = tf.add(tf.matmul(tf.cast(h2, tf.float32), w3), b3)
-h3 = tf.layers.batch_normalization(h3, training=True)
-emb = tf.nn.sigmoid(h3)
+emb = tf.nn.sigmoid(h2)
 
 train_loss, losses = unimodal_magnet_loss(emb, label)
-
+h2
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(train_loss)
 
 with tf.Session() as sess:
