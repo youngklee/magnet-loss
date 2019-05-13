@@ -112,7 +112,7 @@ h2 = tf.layers.batch_normalization(h2, training=True)
 emb = tf.nn.sigmoid(h2)
 
 train_loss, losses = unimodal_magnet_loss(emb, label)
-h2
+
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(train_loss)
 
 with tf.Session() as sess:
