@@ -111,7 +111,7 @@ h2 = tf.add(tf.matmul(tf.cast(h1, tf.float32), w2), b2)
 h2 = tf.layers.batch_normalization(h2, training=True)
 emb = tf.nn.sigmoid(h2)
 
-train_loss, losses = unimodal_magnet_loss(emb, label)
+train_loss, _ = unimodal_magnet_loss(emb, label)
 
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(train_loss)
 
