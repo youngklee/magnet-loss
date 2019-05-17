@@ -1,6 +1,6 @@
 # magnet-loss
 
-An encoder for learning embeddings via minimizing the magnet loss. It can be used for semi-supervised clustering. See "METRIC LEARNING WITH ADAPTIVE DENSITY DISCRIMINATION" by Rippel et al. The codes from the following repos are used:
+An encoder for learning embeddings via minimizing the magnet loss. In the embedding space each class forms its own cluster. See "METRIC LEARNING WITH ADAPTIVE DENSITY DISCRIMINATION" by Rippel et al. The codes from the following repos are used:
 * https://github.com/pumpikano/tf-magnet-loss
 * https://github.com/nwojke/cosine_metric_learning/blob/master/losses.py
 
